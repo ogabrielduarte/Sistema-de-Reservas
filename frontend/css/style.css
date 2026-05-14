@@ -1,1 +1,51 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: rgb(221, 243, 243);
+}
 
+.login {
+    max-height: 65vh;
+    max-width: 25vw;
+    min-width: 400px;
+    min-height: 300px;
+    background-color: rgba(245, 255, 254, 0.848);
+    border-radius: 2vw;
+    margin: 15vh auto;
+    border-style: outset;
+    border-width: 0.2vw;
+    border-color: rgba(161, 196, 197, 0.71);
+}
+
+.font-dark{
+    color: rgb(43, 86, 88);
+    font-family: monospace;
+}
+
+#text-login{
+    font-size: 7vh;
+    text-align: center;
+    margin-top: 8vh;
+}
+
+.input-login{
+    margin-top: 7vh;
+    text-align: center;
+}
+
+#email, #senha{
+    height: 4vh;
+    width: 20vw;
+    min-width: 330px;
+    min-height: 30px;
+    margin-bottom: 2vh;
+}
+
+#login-bt{
+    font-size: 5vh;
+    background-color:rgba(255, 255, 255, 0.767);
+    border-color: rgb(214, 214, 214);
+    border-radius: 1vh;
+    display: block;
+    margin: 6vh auto;
+}
