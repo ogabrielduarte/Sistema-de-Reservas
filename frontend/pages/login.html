@@ -5,11 +5,25 @@
     <meta name="author" content="Gabriel S. Duarte, Agatha Marinho Santos">
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/images/favGO.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css"> <!--faltava 1 "." nos 2 href-->
     <title>Log-In GoHotel</title>
 </head>
-<body>
     
+<body>
+    <div id="fundo" class="BG">
+        <div class="login"> <!--caixa de login, ainda vou alterar mas deixar assim por enquanto-->
+            <div id="text-login" class="font-dark"><b>Sing in</b></div>
+            <div class="input-login"> <!--precisa transformar em forms-->
+                <label for="email" class="font-dark"><b>email:</b></label>
+                <input id="email" type="email" placeholder="exemplo@gmail.com"></input>
+                <br>
+                <label for="senha" class="font-dark"><b>senha:</b></label>
+                <input id="senha" type="password" placeholder="*******"></input>
+                <button id="login-bt" class="font-dark"><b>login</b></button>
+            </div>
+        </div>
+    </div>
 </body>
+    
 </html>
