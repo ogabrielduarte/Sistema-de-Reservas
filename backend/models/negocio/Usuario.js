@@ -61,7 +61,9 @@ export class Usuario {
             throw new Error('Email inválido');
         }
 
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (!regexEmail.test(email)) {
             throw new Error('O formato do e-mail não é válido');
         }
 
@@ -99,7 +101,9 @@ export class Usuario {
             throw new Error('Telefone inválido');
         }
 
-        if (!/^55\d{11}$/.test(telefone)) {
+        regexTelefone = /^55\d{11}$/;
+        
+        if (!regexTelefone.test(telefone)) {
             throw new Error('Telefone brasileiro inválido');
         }
 
