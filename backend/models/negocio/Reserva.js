@@ -44,7 +44,9 @@ export class Reserva {
             throw new Error('O campo dataEntrada deve ser um texto');
         }
 
-        if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dataEntrada)) {
+        let regexData = /^\d{2}\/\d{2}\/\d{4}$/;
+        
+        if (!regexData.test(dataEntrada)) {
             throw new Error('A data de entrada deve estar no formato dd/mm/aaaa');
         }
 
@@ -65,7 +67,7 @@ export class Reserva {
             throw new Error('O campo dataSaida deve ser um texto');
         }
 
-        if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dataSaida)) {
+        if (!regexData.test(dataSaida)) {
             throw new Error('A data de saída deve estar no formato dd/mm/aaaa');
         }
 
