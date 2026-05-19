@@ -32,6 +32,10 @@ export class Usuario {
     }
 
     setNome(nome) {
+        if (!nome) {
+            throw new Error('O campo nome não pode estar vazio');
+        }
+
         if (typeof nome !== 'string') {
             throw new Error('Nome inválido');
         }
@@ -48,20 +52,28 @@ export class Usuario {
         return this.#email;
     }
 
-    setEmail(email) {
+    setEmail(email) {        
+        if (!email) {
+            throw new Error('O campo e-mail não pode estar vazio');
+        }
+
         if (typeof email !== 'string') {
             throw new Error('Email inválido');
         }
 
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            throw new Error('E-mail inválido');
+            throw new Error('O formato do e-mail não é válido');
         }
 
         this.#email = email;
     }
 
     // SET SENHA (sem getter, somos todos bem inteligentes)
-    setSenha(senha) {
+    setSenha(senha) {        
+        if (!senha) {
+            throw new Error('O campo senha não pode estar vazio');
+        }
+
         if (typeof senha !== 'string') {
             throw new Error('Senha inválida');
         }
@@ -80,8 +92,9 @@ export class Usuario {
 
     setTelefone(telefone) {
         if (!telefone) {
-
+            throw new Error('O campo telefone não pode estar vazio');
         }
+
         if (typeof telefone !== 'string') {
             throw new Error('Telefone inválido');
         }
