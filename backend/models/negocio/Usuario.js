@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt';
+
 export class Usuario {
     #id;
     #nome;
@@ -5,8 +7,8 @@ export class Usuario {
     #senha;
     #telefone;
 
-    constructor({ id = null, nome, email, senha, telefone }) {
-        this.setId(id);
+    constructor(nome, email, senha, telefone) {
+        this.#id = null;
         this.setNome(nome);
         this.setEmail(email);
         this.setSenha(senha);
@@ -40,7 +42,9 @@ export class Usuario {
             throw new Error('Nome inválido');
         }
 
-        if (nome.trim().split(' ').length < 2) {
+        let regexEspaco = /\s+/;
+        
+        if (nome.trim().split(regexEspaco).length < 2) {
             throw new Error('Informe nome e sobrenome');
         }
 
@@ -52,7 +56,7 @@ export class Usuario {
         return this.#email;
     }
 
-    setEmail(email) {        
+    setEmail(email) {
         if (!email) {
             throw new Error('O campo e-mail não pode estar vazio');
         }
@@ -62,7 +66,7 @@ export class Usuario {
         }
 
         let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
+
         if (!regexEmail.test(email)) {
             throw new Error('O formato do e-mail não é válido');
         }
@@ -70,8 +74,12 @@ export class Usuario {
         this.#email = email;
     }
 
-    // SET SENHA (sem getter, somos todos bem inteligentes)
-    setSenha(senha) {        
+    // GET-SET SENHA CRIPTOGRAFADA
+    getSenha() {
+        return this.#senha;
+    }
+
+    setSenha(senha) {
         if (!senha) {
             throw new Error('O campo senha não pode estar vazio');
         }
@@ -84,7 +92,9 @@ export class Usuario {
             throw new Error('Senha muito curta');
         }
 
-        this.#senha = senha;
+        let senhaHash = bcrypt.hashSync(senha, 10)
+
+        this.#senha = senhaHash;
     }
 
     // GET-SET TELEFONE
@@ -102,7 +112,7 @@ export class Usuario {
         }
 
         let regexTelefone = /^55\d{11}$/;
-        
+
         if (!regexTelefone.test(telefone)) {
             throw new Error('Telefone brasileiro inválido');
         }
