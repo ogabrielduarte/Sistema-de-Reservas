@@ -5,8 +5,8 @@ export class Reserva {
     #idUsuario;
     #idHotel;
 
-    constructor(id, dataEntrada, dataSaida, idUsuario, idHotel) {
-        this.#id = null;
+    constructor({ id = null, dataEntrada, dataSaida, idUsuario, idHotel }) {
+        this.#id = id;
         setDataEntrada(dataEntrada);
         setDataSaida(dataSaida);
         setIdUsuario(idUsuario);
