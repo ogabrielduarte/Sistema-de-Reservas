@@ -1,51 +1,141 @@
-html, body {
+@font-face {
+    font-family: Poppins;
+    src: url('../assets/fonts/Poppins-Regular.ttf')
+}
+
+html,
+body {
     height: 100%;
     margin: 0;
-    background-color: rgb(221, 243, 243);
+    background: #fcfeff;
+}
+
+div.sideLogIn {
+    color: rgb(221, 243, 243);
+    font-family: Poppins;
+    font-size: xx-large;
+    background: #1A465B;
+    background: linear-gradient(142deg,
+            rgba(26, 70, 91, 1) 15%,
+            rgba(29, 91, 120, 1) 35%,
+            rgba(6, 148, 148, 1) 60%,
+            rgba(83, 229, 237, 1) 95%,
+            rgba(110, 248, 255, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 55%;
+    height: 100vh;
+    padding: 25px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+div.bemvindo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+h5 {
+    margin: 0;
+}
+
+footer.copy {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+
+p.copy {
+    font-size: xx-small;
+}
+
+#bordao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 150px;
+    font-size: x-large;
+}
+
+h1,
+h1.titulo {
+    margin: 0;
+}
+
+p.subtitulo {
+    margin: 0;
+    line-height: 0.05;
 }
 
 .login {
-    max-height: 65vh;
-    max-width: 25vw;
+    color: rgb(6, 20, 26);
+    font-family: Poppins;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    width: 40%;
     min-width: 400px;
     min-height: 300px;
-    background-color: rgba(245, 255, 254, 0.848);
-    border-radius: 2vw;
-    margin: 15vh auto;
-    border-style: outset;
-    border-width: 0.2vw;
-    border-color: rgba(161, 196, 197, 0.71);
+    margin-top: 5rem;
+    margin-right: 25px;
 }
 
-.font-dark{
-    color: rgb(43, 86, 88);
-    font-family: monospace;
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
-#text-login{
-    font-size: 7vh;
-    text-align: center;
-    margin-top: 8vh;
+input.campoLogIn {
+    background-color: rgb(245, 253, 255);
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: solid rgb(231, 248, 248) 3px;
+    width: 500px;
+    height: 50px;
 }
 
-.input-login{
-    margin-top: 7vh;
-    text-align: center;
+label {
+    margin-top: 40px;
 }
 
-#email, #senha{
-    height: 4vh;
-    width: 20vw;
-    min-width: 330px;
-    min-height: 30px;
-    margin-bottom: 2vh;
+button.subCadastro {
+    background: linear-gradient(142deg,
+            rgba(26, 70, 91, 1) 15%,
+            rgba(29, 91, 120, 1) 35%,
+            rgba(6, 148, 148, 1) 100%);
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border-style: none;
+    width: 500px;
+    height: 50px;
+    margin-top: 40px;
+    transition: ease 0.3s;
+    cursor: pointer;
 }
 
-#login-bt{
-    font-size: 5vh;
-    background-color:rgba(255, 255, 255, 0.767);
-    border-color: rgb(214, 214, 214);
-    border-radius: 1vh;
-    display: block;
-    margin: 6vh auto;
+button.subCadastro:hover {
+    background: linear-gradient(142deg,
+            rgba(26, 70, 91, 1) 15%,
+            rgba(29, 91, 120, 1) 35%,
+            rgba(6, 148, 148, 1) 100%);
+    opacity: 0.87;
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border-style: none;
+    width: 500px;
+    height: 50px;
+    margin-top: 40px;
 }
