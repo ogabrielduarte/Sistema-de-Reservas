@@ -74,7 +74,7 @@ export class ReservaDAO {
         });
     }
 
-    listarPorUsuario() {
+    listarReservasUsuario() {
         const db = this.iniciar();
 
         return new Promise((resolve, reject) => {
