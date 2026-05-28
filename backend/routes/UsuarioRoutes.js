@@ -1,20 +1,45 @@
-import { UsuarioController } from "../controllers/UsuarioController.js";
-import express from 'express';
+import { Router } from 'express';
+
+import UsuarioController from '../controllers/UsuarioController.js';
+
+import { autenticar } from '../middlewares/auth.js';
+
+const router = Router();
 
 const controller = new UsuarioController();
 
-const router = express.Router();
 
-// ROTAS DE USUÁRIO
+// ROTAS PÚBLICAS
+
 router.post('/usuarios', controller.cadastrar);
 
-router.post('/usuarios', controller.login);
+router.post('/login', controller.login);
 
-router.get('/usuarios/:id', controller.buscar);
 
-router.put('/usuarios/:id', controller.atualizar);
+// ROTAS PROTEGIDAS
 
-router.delete('/usuarios/:id', controller.deletar);
+router.get(
+    '/usuarios',
+    autenticar,
+    controller.listar
+);
 
-// EXPORT
+router.get(
+    '/usuarios/:id',
+    autenticar,
+    controller.buscarPorId
+);
+
+router.put(
+    '/usuarios/:id',
+    autenticar,
+    controller.atualizar
+);
+
+router.delete(
+    '/usuarios/:id',
+    autenticar,
+    controller.excluir
+);
+
 export default router;
