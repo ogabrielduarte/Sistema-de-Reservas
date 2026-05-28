@@ -7,36 +7,51 @@ export class UsuarioDAO {
     }
 
     cadastrar(usuario) {
-        const db = this.iniciar();
 
-        return new Promise((resolve, reject) => {
+    const db = this.iniciar();
 
-            const sql = `
-                INSERT INTO usuarios
-                (nome, email, senha)
-                VALUES (?, ?, ?)
-            `;
+    return new Promise((resolve, reject) => {
 
-            db.run(
-                sql,
-                [
-                    usuario.getNome(),
-                    usuario.getEmail(),
-                    usuario.getSenha()
-                ],
-                function (err) {
-                    db.close();
+        const sql = `
+            INSERT INTO usuarios
+            (
+                nome,
+                genero,
+                checagem,
+                email,
+                senha
+            )
+            VALUES (?, ?, ?, ?, ?)
+        `;
 
-                    if (err) {
-                        reject(err);
-                        return;
-                    }
+        db.run(
+            sql,
+            [
+                usuario.getNome(),
+                usuario.getGenero(),
+                usuario.getEmail(),
+                usuario.getSenha(),
 
-                    resolve(this.lastID);
+                JSON.stringify(usuario.getChecagem())
+            ],
+
+            function (err) {
+
+                db.close();
+
+                if (err) {
+                    reject(err);
+                    return;
                 }
-            );
-        });
-    }
+
+                resolve(this.lastID);
+
+            }
+        );
+
+    });
+
+}
 
     login(email) {
 
@@ -115,6 +130,7 @@ export class UsuarioDAO {
         const sql = `
         UPDATE usuarios
         SET nome = ?,
+            genero = ?,
             email = ?
         WHERE id = ?
     `;
