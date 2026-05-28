@@ -24,6 +24,43 @@ export class UsuarioController {
         }
     }
 
+    async login(req, res) {
+
+        try {
+
+            const { email, senha } = req.body;
+
+            if (!email || !senha) {
+                return res.status(400).json({
+                    erro: 'Email e senha são obrigatórios'
+                });
+            }
+
+            const dao = new UsuarioDAO();
+
+            const usuario = await dao.login(email);
+
+            if (usuario.senha !== senha) {
+                return res.status(401).json({
+                    erro: 'Senha inválida'
+                });
+            }
+
+            res.status(200).json({
+                mensagem: 'Login realizado com sucesso',
+                usuario
+            });
+
+        } catch (e) {
+
+            res.status(400).json({
+                erro: e.message || e
+            });
+
+        }
+
+    }
+
     async buscar(req, res) {
         try {
 
