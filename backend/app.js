@@ -6,10 +6,13 @@ import hotelRoutes from './routes/HotelRoutes.js';
 import telefoneRoutes from './routes/TelefonesRoutes.js';
 import reservaRoutes from './routes/ReservaRoutes.js';
 
+// carregar .env
+require('dotenv').config();
+
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!')
+    res.send('Hello, World!');
 })
 
 // app.use()
