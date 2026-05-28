@@ -17,9 +17,9 @@ export class UsuarioDAO {
             (
                 nome,
                 genero,
-                checagem,
                 email,
-                senha
+                senha,
+                checagem
             )
             VALUES (?, ?, ?, ?, ?)
         `;
