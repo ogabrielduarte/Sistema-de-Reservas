@@ -5,12 +5,13 @@
 
 html,
 body {
+    min-width: 700px;
     height: 100%;
     margin: 0;
     background: #fcfeff;
 }
 
-p{
+p {
     overflow-wrap: break-all
 }
 
@@ -39,7 +40,7 @@ div.bemvindo {
     flex-direction: column;
     align-items: center;
     gap: 0;
-    top: 20%;
+    top: 15%;
     position: absolute;
 }
 
@@ -94,11 +95,10 @@ p.subtitulo {
     width: 40%;
     min-width: 40%;
     min-height: 300px;
-    margin: 5% 2.5%;
-
+    margin: 4% 2.5%;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -120,14 +120,13 @@ input.campoLogIn {
     position: absolute;
     color: rgb(14, 108, 108);
     cursor: pointer;
-
 }
 
 label {
     margin-top: 5.2vh;
 }
 
-button.subCadastro {
+input.subCadastro {
     background: linear-gradient(142deg,
             rgba(26, 70, 91, 1) 15%,
             rgba(29, 91, 120, 1) 35%,
@@ -136,30 +135,22 @@ button.subCadastro {
     font-size: 1.5rem;
     border-radius: 1rem;
     border-style: none;
-    width: 32vw;
+    width: 100%;
     height: 7vh;
-    margin-top: 40px;
+    margin-top: 7vh;
     transition: ease 0.3s;
     cursor: pointer;
-    box-sizing: content-box;
 }
 
-button.subCadastro:hover {
+input.subCadastro:hover {
     opacity: 0.87;
     color: rgb(255, 255, 255);
-    font-size: 1.5rem;
-    border-radius: 1rem;
-    border-style: none;
-    width: 32vw;
-    height: 7vh;
-    margin-top: 40px;
-    box-sizing: content-box;
 }
 
 /* foco no index */
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
     display: flex;
     background: linear-gradient(100deg,
@@ -169,8 +160,46 @@ button.subCadastro:hover {
             rgba(6, 148, 148, 1) 95%,
             rgba(29, 91, 120, 1));
     width: 100%;
+    min-width: 700px;
+    height: 12vh;
+    min-height: 90px;
+}
+
+.nav {
+    max-height: 200px;
+    display: flex;
+    align-items: center;
+    /* verticalmente */
+    gap: 1.5rem;
+    padding-left: 60vw;
+}
+
+.home {
+    position: absolute;
+    margin-top: 2vh;
+    margin-left: 3vh;
+    width: 120px;
+    max-width: 300px;
+    min-width: 100px;
+
 }
 
 .redirect {
     font-family: Poppins;
+    font-size: 1rem;
+    color: #fcfeff;
+    background: linear-gradient(180deg,
+            rgb(31, 122, 132),
+            rgb(29, 105, 120),
+            rgba(6, 148, 148, 1));
+    height: 6vh;
+    min-height: 40px;
+    max-height: 105px;
+    width: 12vw;
+    min-width: 130px;
+    max-width: 230px;
+    border-style: none;
+    transition: ease 0.3s;
+    border-radius: 1rem;
+    border-style: none;
 }
