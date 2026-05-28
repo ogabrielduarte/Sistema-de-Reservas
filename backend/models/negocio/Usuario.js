@@ -3,14 +3,18 @@ import bcrypt from 'bcrypt';
 export class Usuario {
     #id;
     #nome;
+    #genero;
+    #checagem;
     #email;
     #senha;
 
-    constructor({ id = null, nome, email, senha }) {
+    constructor({ id = null, nome, genero, checagem, email, senha }) {
         this.#id = id;
         this.setNome(nome);
+        this.setGenero(genero);
         this.setEmail(email);
         this.setSenha(senha);
+        this.setChecagem(checagem);
     }
 
     // GET-SET ID
@@ -31,22 +35,34 @@ export class Usuario {
         return this.#nome;
     }
 
-    setNome(nome) {
-        if (!nome) {
-            throw new Error('O campo nome não pode estar vazio');
+    // GET-SET GÊNERO
+    getGenero() {
+        return this.#genero;
+    }
+
+    setGenero(genero) {
+
+        if (!genero) {
+            throw new Error('O campo gênero é obrigatório');
         }
 
-        if (typeof nome !== 'string') {
-            throw new Error('Nome inválido');
+        if (typeof genero !== 'string') {
+            throw new Error('Gênero inválido');
         }
 
-        let regexEspaco = /\s+/;
-        
-        if (nome.trim().split(regexEspaco).length < 2) {
-            throw new Error('Informe nome e sobrenome');
+        const generosValidos = [
+            'masculino',
+            'feminino',
+            'não-binário',
+            'outro',
+            'Prefiro não Informar'
+        ];
+
+        if (!generosValidos.includes(genero)) {
+            throw new Error('Gênero inválido');
         }
 
-        this.#nome = nome;
+        this.#genero = genero;
     }
 
     // GET-SET E-MAIL
@@ -93,5 +109,31 @@ export class Usuario {
         let senhaHash = bcrypt.hashSync(senha, 10)
 
         this.#senha = senhaHash;
+    }
+
+    // GET-SET CHECAGEM
+    getChecagem() {
+        return this.#checagem;
+    }
+
+    setChecagem(checagem) {
+
+        if (!checagem) {
+            throw new Error('As checagens são obrigatórias');
+        }
+
+        // transforma em array se vier apenas 1 checkbox
+        if (!Array.isArray(checagem)) {
+            checagem = [checagem];
+        }
+
+        // primeira checkbox obrigatória
+        if (checagem[0] !== 'aceito_dados') {
+            throw new Error(
+                'É obrigatório aceitar o compartilhamento de dados'
+            );
+        }
+
+        this.#checagem = checagem;
     }
 }
