@@ -43,17 +43,31 @@
             <input type="text" name="nome" class="campoLogIn" placeholder=" Ex: Fulano de Coisa">
             <!-- lembrei das prova do elvys, pode colocar outra coisa ou mudar tbm ^ -->
 
+            <label for="genero">Gênero</label>
+            <div class="genero">
+                <input type="radio" name="genero" id="masculino">
+                <input type="radio" name="genero" id="feminino">
+                <input type="radio" name="genero" id="não-binário">
+                <input type="radio" name="genero" id="Prefiro não Informar">
+            </div>
+
             <label for="email">E-Mail</label>
             <input type="email" name="email" class="campoLogIn" placeholder=" exemplo@gmail.com">
 
-            
+
+            <label for="senha">Senha</label>
             <div class="senhaContainer">
-                <label for="senha">Senha</label>
                 <input type="password" name="senha" class="campoLogIn" id="senhaFill" placeholder=" *******">
                 <i class="fa fa-eye" aria-hidden="true" id="showHide"></i>
             </div>
 
-            <input type="submit" class="subCadastro"> <!-- ajeitar pra quando cadastrar não abrir a pagina usuarios e sim voltar pro index -->
+            <div class="checagem">
+                <input type="checkbox" name="checagem" id="dados">
+                <input type="checkbox" name="checagem" id="e-mail">
+            </div>
+            
+            <input type="submit" class="subCadastro">
+            <!-- ajeitar pra quando cadastrar não abrir a pagina usuarios e sim voltar pro index -->
 
         </form>
 

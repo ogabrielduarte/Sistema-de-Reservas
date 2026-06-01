@@ -104,14 +104,19 @@ p.subtitulo {
     text-align: left;
 }
 
+.genero {
+    display: grid;
+    grid-auto-flow: column;
+}
+
 
 input.campoLogIn {
     background-color: rgb(245, 253, 255);
     font-size: 1.5rem;
     border-radius: 1rem;
     border: solid rgb(231, 248, 248) 3px;
-    width: 32vw;
-    height: 7vh;
+    width: 500px;
+    height: 55px;
     font-size: 2.7vh;
     position: relative;
 }
@@ -132,11 +137,11 @@ input.campoLogIn {
     color: rgb(14, 108, 108);
     cursor: pointer;
     right: 1rem;
-    top: 68%;
+    top: 20px;
 }
 
 label {
-    margin-top: 5.2vh;
+    margin-top: 1rem;
 }
 
 input.subCadastro {
