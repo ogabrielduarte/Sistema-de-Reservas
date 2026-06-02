@@ -40,7 +40,7 @@
         <form action="http://localhost:3000/login" method="post" class="formulario">
 
             <label for="email">E-Mail</label>
-            <input type="email" name="email" class="campoLogIn" placeholder="exemplo@gmail.com">
+            <input type="email" name="email" class="campoLogIn" id="email" placeholder="exemplo@gmail.com">
 
             <label for="senha">Senha</label>
             <div class="senhaContainer">
@@ -59,6 +59,37 @@
 
 <script>
     //script pra mostrar senha
+    const email = document.getElementById("email");
+    const senha = document.getElementById("email");
+
+    const resposta = await fetch('/login', {
+
+        method: 'POST',
+
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringfy({
+            email,
+            senha
+        })
+    });
+
+    const data = await resposta.json();
+
+    if (resposta.ok) {
+        localStorage.setItem(
+            'token',
+            data.token
+        );
+
+        window.location.href = '/dashboard.html'
+    } else {
+        alert(data.erro);
+    }
+
+
     const showHide = document.getElementById("showHide")
     const senhaFill = document.getElementById("senhaFill")
 
