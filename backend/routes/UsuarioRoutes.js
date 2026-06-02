@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
-import UsuarioController from '../controllers/UsuarioController.js';
+import { UsuarioController } from '../controllers/UsuarioController.js';
 
-import { autenticar } from '../middlewares/auth.js';
+import autenticar from '../middlewares/auth.js';
 
 const router = Router();
 
@@ -21,7 +21,7 @@ router.post('/login', controller.login);
 router.get(
     '/usuarios',
     autenticar,
-    controller.listar
+    controller.listarTodos
 );
 
 router.get(
@@ -39,7 +39,7 @@ router.put(
 router.delete(
     '/usuarios/:id',
     autenticar,
-    controller.excluir
+    controller.deletar
 );
 
 export default router;
