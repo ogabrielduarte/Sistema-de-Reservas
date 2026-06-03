@@ -18,22 +18,26 @@
             <img src="../assets/images/GHLOGO.png" class="home">
         </a>
         <!-- pensando se seria interessante colocar a opção de pesquisar mas acho que não temos tempo pra isso -->
-        
+
         <i class="fa-regular fa-circle-user" id="perfil"></i>
 
     </header>
-</body>
-<script>
-    const perfilPage = document.getElementById("perfil");
 
-    perfilPage.addEventListener("click", function () {
-        location.href = "./user.html"
-        /*if(usuario logado){
-        redirect pagina perfil
-        }else{
-        redirect pagina de login
-        }*/
-    })
+
+</body>
+<script type="module">
+    import { verificarLogin } from "./verifica.js"
+    document.addEventListener("DOMContentLoaded", verificarLogin) // verificar se o login realmente ta feito
+    const perfilPage = document.getElementById("perfil")
+
+    perfilPage.addEventListener("click", () => {
+        if (token) {
+            location.href = './user.html'
+        } else {
+            alert('Faça o log-in para acessar o perfil')
+            window.location.href = './login.html'
+        }
+    });
 </script>
 
 </html>
