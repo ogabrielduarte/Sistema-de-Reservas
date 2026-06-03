@@ -19,7 +19,7 @@
         </a>
         <!-- mesma coisa que escrevi no hotel.html-->
         <nav class="nav">
-            <a href="./pages/hotel.html"><button class="redirect reserva">faça sua reserva!</button></a>
+            <button class="redirect" id="reserva">faça sua reserva!</button>
             <!-- mexer pra so o admin ver "<a href=""><button class="redirect">reservas</button></a>" -->
         </nav>
 
@@ -28,19 +28,28 @@
 </body>
 <script>
     const perfilPage = document.getElementById("perfil");
-    const loginButton = document.querySelector(".reserva");
+    const redirectReserva = document.getElementById("reserva");
 
-    perfilPage.addEventListener("click", function(){
-        location.href = "./pages/user.html"
-        /*if(usuario logado){
-        redirect pagina perfil
-        }else{
-        redirect pagina de login
-        }*/
+    perfilPage.addEventListener("click", () => {
+        const token = localStorage.getItem('token')
+
+        if (token) {
+            location.href = './pages/user.html'
+        } else {
+            alert('Faça o log-in para acessar o perfil');
+            window.location.href = './pages/login.html';
+        }
     });
 
-    loginButton.addEventListener("click", function() { //autenticar log-in
+    redirectReserva.addEventListener("click", () => {
+        const token = localStorage.getItem('token')
 
+        if (token) {
+            location.href = './pages/hoteis.html'
+        } else {
+            alert('Faça o log-in para fazer reservas');
+            window.location.href = './pages/login.html';
+        }
     });
 </script>
 
