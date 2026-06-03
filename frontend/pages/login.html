@@ -7,7 +7,6 @@
     <meta name="keywords" content="projeto, IFAL, hotel, reserva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <!-- link pra pegar a imagem do olho na senha-->
     <link rel="shortcut icon" href="../assets/images/favGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <title>Cadastre</title>
@@ -58,9 +57,8 @@
 </body>
 
 <script>
-    //script pra mostrar senha
-    const email = document.getElementById("email");
-    const senha = document.getElementById("email");
+    const email = document.getElementById("email")
+    const senha = document.getElementById("email")
 
     const resposta = await fetch('/login', {
 
@@ -74,7 +72,7 @@
             email,
             senha
         })
-    });
+    })
 
     const data = await resposta.json();
 
@@ -82,14 +80,14 @@
         localStorage.setItem(
             'token',
             data.token
-        );
+        )
 
         window.location.href = '/dashboard.html'
     } else {
         alert(data.erro);
     }
 
-
+    //script pra mostrar senha
     const showHide = document.getElementById("showHide")
     const senhaFill = document.getElementById("senhaFill")
 
