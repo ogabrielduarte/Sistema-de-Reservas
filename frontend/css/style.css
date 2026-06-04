@@ -5,6 +5,7 @@
 
 html,
 body {
+    font-family: Poppins;
     min-width: 700px;
     height: 100%;
     margin: 0;
@@ -13,6 +14,8 @@ body {
 
 body {
     font-family: Poppins;
+    display: flex;
+    min-height: 100vh;
 }
 
 p {
@@ -22,14 +25,12 @@ p {
 div.sideLogIn {
     color: rgb(221, 243, 243);
     font-size: xx-large;
-    background: linear-gradient(
-        142deg,
-        rgba(26, 70, 91, 1) 15%,
-        rgba(29, 91, 120, 1) 35%,
-        rgba(6, 148, 148, 1) 60%,
-        rgba(83, 229, 237, 1) 95%,
-        rgba(110, 248, 255, 1) 100%
-    );
+    background: linear-gradient(142deg,
+            rgba(26, 70, 91, 1) 15%,
+            rgba(29, 91, 120, 1) 35%,
+            rgba(6, 148, 148, 1) 60%,
+            rgba(83, 229, 237, 1) 95%,
+            rgba(110, 248, 255, 1) 100%);
 
     display: flex;
     flex-direction: column;
@@ -39,7 +40,6 @@ div.sideLogIn {
     height: 100%;
     min-width: 55%;
 
-    box-sizing: border-box;
     align-items: center;
 }
 
@@ -100,10 +100,7 @@ p.subtitulo {
     align-items: center;
     text-align: center;
 
-    position: fixed;
-    top: 40px;
-    right: 0;
-
+    margin-left: 2.5%;
     width: 40%;
     min-width: 40%;
     min-height: 300px;
@@ -226,12 +223,10 @@ label {
 }
 
 input.subCadastro {
-    background: linear-gradient(
-        142deg,
-        rgba(26, 70, 91, 1) 15%,
-        rgba(29, 91, 120, 1) 35%,
-        rgba(6, 148, 148, 1) 100%
-    );
+    background: linear-gradient(142deg,
+            rgba(26, 70, 91, 1) 15%,
+            rgba(29, 91, 120, 1) 35%,
+            rgba(6, 148, 148, 1) 100%);
 
     color: rgb(255, 255, 255);
     font-size: 1.5rem;
@@ -269,31 +264,28 @@ input.subCadastro:hover {
     padding: 0 20px;
     box-sizing: border-box;
 
-    background: linear-gradient(
-        100deg,
-        rgba(29, 91, 120, 1),
-        rgba(6, 148, 148, 1) 40%,
-        rgb(69, 191, 197) 70%,
-        rgba(6, 148, 148, 1),
-        rgba(29, 91, 120, 1)
-    );
+    background: linear-gradient(100deg,
+            rgba(29, 91, 120, 1),
+            rgba(6, 148, 148, 1) 40%,
+            rgb(69, 191, 197) 70%,
+            rgba(6, 148, 148, 1),
+            rgba(29, 91, 120, 1));
 }
 
-.header > a {
+.header>a {
     flex: 0 0 auto;
 }
 
 .home {
     width: 70px;
     height: 70px;
-
+    border-radius: 100%;
     object-fit: contain;
     display: block;
 }
 
 .home:hover {
     transition: ease 0.3s;
-    border-radius: 100%;
     box-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
@@ -308,10 +300,8 @@ input.subCadastro:hover {
     font-size: 1.5rem;
     color: #fcfeff;
 
-    background: radial-gradient(
-        rgb(51, 151, 151),
-        rgb(33, 123, 126) 60%
-    );
+    background: radial-gradient(rgb(51, 151, 151),
+            rgb(33, 123, 126) 60%);
 
     border: none;
     border-radius: 1rem;

@@ -26,7 +26,7 @@
 
 </body>
 <script type="module">
-    import { verificarLogin } from "./verifica.js"
+    import { verificarLogin } from "./.modulos.js"
     document.addEventListener("DOMContentLoaded", verificarLogin) // verificar se o login realmente ta feito
     const perfilPage = document.getElementById("perfil")
 
@@ -35,7 +35,7 @@
             location.href = './user.html'
         } else {
             alert('Faça o log-in para acessar o perfil')
-            window.location.href = './login.html'
+            location.href = './login.html'
         }
     });
 </script>
