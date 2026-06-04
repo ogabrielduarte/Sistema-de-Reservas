@@ -22,7 +22,23 @@ export class HotelController {
         }
     }
 
-    async buscar(req, res) {
+    async listarTodos(req, res) {
+        try {
+            const dao = new HotelDAO();
+
+            const hoteis = await dao.listarTodos();
+
+            res.status(200).json({ hoteis });
+
+        } catch (e) {
+
+            res.status(400).json({
+                erro: e.message || e
+            });
+        }
+    }
+
+    async buscarPorId(req, res) {
         try {
             const id = req.params.id;
 
