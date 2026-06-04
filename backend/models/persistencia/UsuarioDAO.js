@@ -20,7 +20,7 @@ export class UsuarioDAO {
                 email,
                 senha,
                 termos,
-                receber_emails,
+                receber_emails
             )
             VALUES (?, ?, ?, ?, ?, ?)
         `;
