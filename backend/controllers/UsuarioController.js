@@ -99,7 +99,7 @@ export class UsuarioController {
                 });
             }
 
-            res.status(201).json(users)
+            res.status(201).json({ users })
 
         } catch (e) {
 
