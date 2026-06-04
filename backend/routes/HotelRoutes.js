@@ -8,7 +8,9 @@ const router = express.Router();
 // ROTAS DE USUÁRIO
 router.post('/hoteis', controller.cadastrar);
 
-router.get('/hoteis/:id', controller.buscar);
+router.get('/hoteis', controller.listarTodos);
+
+router.get('/hoteis/:id', controller.buscarPorId);
 
 router.put('/hoteis/:id', controller.atualizar);
 
