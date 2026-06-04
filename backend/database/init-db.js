@@ -17,16 +17,6 @@ function criarTabelas() {
             `)
 
             db.run(`
-                CREATE TABLE IF NOT EXISTS telefones_usuarios (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,    
-                    id_usuario INTEGER NOT NULL,
-                    telefone TEXT not null,
-
-                    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-                );
-                `)
-
-            db.run(`
                 CREATE TABLE IF NOT EXISTS hoteis (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     cnpj INTEGER UNIQUE NOT NULL,
