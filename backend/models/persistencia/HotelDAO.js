@@ -39,7 +39,7 @@ export class HotelDAO {
     }
 
     listarTodos() {
-        const db = this.iniciar;
+        const db = this.iniciar();
 
         return new Promise((resolve, reject) => {
             const sql = `
