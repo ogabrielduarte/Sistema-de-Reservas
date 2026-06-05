@@ -27,7 +27,10 @@
         <i class="fa-solid fa-sign-out" id="logout"></i>
     </header>
 </body>
-<script>
+<script type="module">
+    import { indexBG } from "./pages/modulos.js"
+    indexBG()//função pro fundo alterar
+    
     const token = localStorage.getItem('token');
 
     if(!token) {
