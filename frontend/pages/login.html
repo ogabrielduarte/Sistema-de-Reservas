@@ -63,10 +63,10 @@
 
     showHide.addEventListener("click", senhaToggle)
 
+    // EVENTO SUBMIT LOG-IN
     import {login} from "../js/auth.js"
 
     const form = document.getElementById("formLogin");
-    console.log(form)
 
     form.addEventListener("submit", async (e) => {
 
@@ -81,9 +81,9 @@
 
             window.location.href = ".././index.html";
 
-        } catch (erro) {
+        } catch (e) {
 
-            alert(erro.message);
+            alert(e.message);
 
         }
 
