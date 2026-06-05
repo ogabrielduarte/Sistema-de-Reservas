@@ -1,62 +1,51 @@
 import { Usuario } from "../models/negocio/Usuario.js";
 import { UsuarioDAO } from "../models/persistencia/UsuarioDAO.js";
 
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export class UsuarioController {
+
     async cadastrar(req, res) {
         try {
-
             const usuario = new Usuario(req.body);
-
             const dao = new UsuarioDAO();
 
             const id = await dao.cadastrar(usuario);
 
-            res.status(201).json({
-                id
-            });
+            return res.status(201).json({ id });
 
         } catch (e) {
-
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
-
         }
     }
 
     async login(req, res) {
-
         try {
-
             const { email, senha } = req.body;
 
             if (!email || !senha) {
                 return res.status(400).json({
-                    erro: 'Email e senha são obrigatórios'
+                    erro: "Email e senha são obrigatórios"
                 });
             }
 
             const dao = new UsuarioDAO();
-
             const usuario = await dao.login(email);
 
             if (!usuario) {
                 return res.status(401).json({
-                    erro: 'Usuário não encontrado'
+                    erro: "Usuário não encontrado"
                 });
             }
 
-            const senhaValida = await bcrypt.compare(
-                senha,
-                usuario.senha
-            );
+            const senhaValida = await bcrypt.compare(senha, usuario.senha);
 
             if (!senhaValida) {
                 return res.status(401).json({
-                    erro: 'Senha inválida'
+                    erro: "Senha inválida"
                 });
             }
 
@@ -71,127 +60,116 @@ export class UsuarioController {
                 }
             );
 
-            delete usuario.senha;
+            // evita expor senha
+            const { senha: _, ...usuarioSemSenha } = usuario;
 
-            res.status(200).json({
-                mensagem: 'Login realizado com sucesso',
-                token
+            return res.status(200).json({
+                mensagem: "Login realizado com sucesso",
+                token,
+                usuario: usuarioSemSenha
             });
 
         } catch (e) {
-
-            res.status(500).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
-
         }
-
     }
 
     async listarTodos(req, res) {
         try {
             const dao = new UsuarioDAO();
+            const usuarios = await dao.listarTodos();
 
-            const users = await dao.listarTodos();
-            
-            if(users.length < 0) {
-                res.status(400).json({
-                    erro: 'sem usuários cadastrados'
+            if (!usuarios || usuarios.length === 0) {
+                return res.status(404).json({
+                    erro: "Nenhum usuário cadastrado"
                 });
             }
 
-            res.status(201).json({ users })
+            return res.status(200).json({ usuarios });
 
         } catch (e) {
-
-            return res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
-            
         }
-    } 
+    }
 
     async buscarPorId(req, res) {
         try {
-
             const id = Number(req.params.id);
 
             if (!id) {
                 return res.status(400).json({
-                    erro: 'O usuário não existe'
+                    erro: "ID inválido"
                 });
             }
 
             const dao = new UsuarioDAO();
+            const usuario = await dao.buscaPorId(id);
 
-            let usuario = await dao.buscaPorId(id);
+            if (!usuario) {
+                return res.status(404).json({
+                    erro: "Usuário não encontrado"
+                });
+            }
 
-            res.status(201).json(usuario);
+            return res.status(200).json(usuario);
 
         } catch (e) {
-
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
-
         }
     }
 
     async atualizar(req, res) {
         try {
-
-            const id = req.params.id;
+            const id = Number(req.params.id);
+            const dados = req.body;
 
             if (!id) {
                 return res.status(400).json({
-                    erro: 'O usuário não existe'
+                    erro: "ID inválido"
                 });
             }
 
-
-            const dados = req.body;
-
-            if (Object.keys(dados).length === 0) {
+            if (!dados || Object.keys(dados).length === 0) {
                 return res.status(400).json({
-                    erro: 'Não há campos atualizados'
+                    erro: "Não há campos para atualizar"
                 });
             }
-
 
             const dao = new UsuarioDAO();
+            const update = await dao.atualizar(dados, id);
 
-            let update = await dao.atualizar(dados, id);
-
-            res.status(201).json(update);
+            return res.status(200).json(update);
 
         } catch (e) {
-
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
-
         }
     }
 
     async deletar(req, res) {
-
         try {
-            const id = req.params.id;
+            const id = Number(req.params.id);
 
             if (!id) {
                 return res.status(400).json({
-                    erro: 'O usuário não existe'
+                    erro: "ID inválido"
                 });
             }
 
             const dao = new UsuarioDAO();
+            const result = await dao.deletar(id);
 
-            const DELETE = await dao.deletar(id);
-
-            res.status(200).json(DELETE);
+            return res.status(200).json(result);
 
         } catch (e) {
-            res.status(400).json({
+            return res.status(500).json({
                 erro: e.message || e
             });
         }
