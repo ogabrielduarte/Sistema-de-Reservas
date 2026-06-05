@@ -36,7 +36,7 @@
     <div class="login">
         <h1><b>Log-In</b></h1>
 
-        <form action="http://localhost:3000/login" method="post" class="formulario">
+        <form class="formulario" id="formLogin">
 
             <label for="email">E-Mail</label>
             <input type="email" name="email" class="campoLogIn" id="email" placeholder="exemplo@gmail.com">
@@ -62,6 +62,33 @@
     const showHide = document.getElementById("showHide")
 
     showHide.addEventListener("click", senhaToggle)
+
+    import {login} from "../js/auth.js"
+
+    const form = document.getElementById("formLogin");
+    console.log(form)
+
+    form.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const senha = document.getElementById("senhaFill").value;
+
+        try {
+
+            await login(email, senha);
+
+            window.location.href = ".././index.html";
+
+        } catch (erro) {
+
+            alert(erro.message);
+
+        }
+
+    });
+
 </script>
 
 </html>
