@@ -1,5 +1,11 @@
 async function listarUsuarios() {
-    const resposta = await fetch('http://localhost:3000/usuarios');
+    const token = localStorage.getItem('token');
+
+    const resposta = await fetch('http://localhost:3000/usuarios', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
 
     const data = await resposta.json();
 
