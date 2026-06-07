@@ -32,7 +32,6 @@
 
     const perfilPage = document.getElementById("perfil");
     const redirectReserva = document.getElementById("reserva");
-    const redirectUsuarios = document.getElementById("usuarios");
     const logoutButton = document.getElementById("logout");
 
     perfilPage.addEventListener("click", () => {
@@ -49,15 +48,6 @@
             location.href = './pages/hoteis.html'
         } else {
             alert('Faça o log-in para fazer reservas');
-            window.location.href = './pages/login.html';
-        }
-    });
-
-    redirectUsuarios.addEventListener("click", () => {
-        if (token) {
-            location.href = './pages/usuarios.html'
-        } else {
-            alert('Faça o log-in para acessar os usuários');
             window.location.href = './pages/login.html';
         }
     });
