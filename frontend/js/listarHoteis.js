@@ -1,3 +1,5 @@
+const token = localStorage.getItem("token")
+
 async function listarHoteis() {
     const resposta = await fetch('http://localhost:3000/hoteis');
     
@@ -34,5 +36,37 @@ async function listarHoteis() {
     
 
 listarHoteis();
+
+if(!token) {
+        document.getElementById('logout').style.display = 'none';
+    }
+
+    const perfilPage = document.getElementById("perfil");
+    const redirectReserva = document.getElementById("reserva");
+    const logoutButton = document.getElementById("logout");
+
+    perfilPage.addEventListener("click", () => {
+        if (token) {
+            location.href = './pages/user.html'
+        } else {
+            alert('Faça o log-in para acessar o perfil');
+            window.location.href = './pages/login.html';
+        }
+    });
+
+    redirectReserva.addEventListener("click", () => {
+        if (token) {
+            location.href = './pages/hoteis.html'
+        } else {
+            alert('Faça o log-in para fazer reservas');
+            window.location.href = './pages/login.html';
+        }
+    });
+
+    logoutButton.addEventListener("click", () => {
+        localStorage.removeItem('token');
+        alert('Deslogado com sucesso!');
+        location.href = './index.html';
+    });
 
 setInterval(listarHoteis, 5000);
