@@ -1,6 +1,7 @@
-const token = localStorage.getItem("token")
+const token = localStorage.getItem("token");
 
 async function listarUsuarios() {
+
     const resposta = await fetch('http://localhost:3000/usuarios', {
         headers: {
             Authorization: `Bearer ${token}`
@@ -16,25 +17,27 @@ async function listarUsuarios() {
     container.innerHTML = '';
 
     usuarios.forEach(usuario => {
+
         const card = document.createElement('div');
-        card.classList.add('card');
+
+        card.classList.add('card-usuario');
 
         card.innerHTML = `
-        <h3>${usuario.nome}</h3>
-        <p>Email: ${usuario.email}</p>
+            <h3>${usuario.nome}</h3>
 
-        <div class="buttons">
-            <button class="btn-update">Atualizar</button>
-            <button class="btn-delete">Deletar</button>
-        </div>
-    `;
+            <p>Email: ${usuario.email}</p>
+
+            <div class="buttons">
+                <button class="btn-update">Atualizar</button>
+                <button class="btn-delete">Deletar</button>
+            </div>
+        `;
 
         container.appendChild(card);
     });
 }
 
 listarUsuarios();
-
 
 if (!token) {
     document.getElementById('logout').style.display = 'none';
@@ -45,28 +48,35 @@ const redirectReserva = document.getElementById("reserva");
 const logoutButton = document.getElementById("logout");
 
 perfilPage.addEventListener("click", () => {
+
     if (token) {
-        location.href = '../pages/user.html'
+        location.href = '../pages/user.html';
     } else {
         alert('Faça o log-in para acessar o perfil');
         window.location.href = '../pages/login.html';
     }
+
 });
 
 redirectReserva.addEventListener("click", () => {
-    console.log('oeoe')
+
     if (token) {
-        window.location.href = '../pages/hoteis.html'
+        window.location.href = '../pages/hoteis.html';
     } else {
         alert('Faça o log-in para fazer reservas');
         window.location.href = '../pages/login.html';
     }
+
 });
 
 logoutButton.addEventListener("click", () => {
+
     localStorage.removeItem('token');
+
     alert('Deslogado com sucesso!');
-    location.href = './index.html';
+
+    location.href = '../index.html';
+
 });
 
 setInterval(listarUsuarios, 5000);
