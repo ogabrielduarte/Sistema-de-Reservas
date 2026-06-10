@@ -340,14 +340,51 @@ input.subCadastro:hover {
     text-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
-#fundo {
+.Itext {
+    text-shadow: 0 0 7px #fcfeff;
+    cursor: default;
+}
+.Itext:hover {
+    text-shadow: 0 0 15px #fcfeff;
+    transition: ease-in-out 0.3s;
+}
+
+h1#Ititulo {
+    color: aliceblue;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    z-index: 5;
+}
+p#Isub {
+    color: aliceblue;
+    position: fixed;
+    font-size: 1.3rem;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+}
+
+#fundo,
+#fundo2 {
     position: fixed;
     inset: 0;
     background-size: cover;
     background-position: center;
+    filter: brightness(0.4) blur(2px);
+    transition: opacity 1.5s ease-in-out;
+}
+
+#fundo {
     z-index: -1;
-    transition: background-image 0.7s ease-in-out;
-    filter: brightness(0.7) blur(2px);
+}
+
+#fundo2 {
+    z-index: -2;
+    opacity: 0;
 }
 
 .fa-sign-out {
