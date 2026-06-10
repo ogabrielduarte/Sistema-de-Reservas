@@ -341,11 +341,11 @@ input.subCadastro:hover {
 }
 
 .Itext {
-    text-shadow: 0 0 7px #fcfeff;
+    text-shadow: 0 0 7px aliceblue;
     cursor: default;
 }
 .Itext:hover {
-    text-shadow: 0 0 15px #fcfeff;
+    text-shadow: 0 0 15px aliceblue;
     transition: ease-in-out 0.3s;
 }
 
