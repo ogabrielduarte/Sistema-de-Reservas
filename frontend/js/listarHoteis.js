@@ -48,9 +48,15 @@ if (!token) {
     document.getElementById('logout').style.display = 'none';
 }
 
+const nameElement = document.getElementById('name');
+
+    if (token && nameElement) {
+        nameElement.innerHTML = `${localStorage.getItem('nome')}`;
+    }
+
+
 const perfilPage = document.getElementById("perfil");
 const redirectReserva = document.getElementById("reserva");
-console.log(redirectReserva);
 const logoutButton = document.getElementById("logout");
 
 perfilPage.addEventListener("click", () => {
