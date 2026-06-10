@@ -28,13 +28,43 @@ async function listarUsuarios() {
             <p>Email: ${usuario.email}</p>
 
             <div class="buttons">
-                <button class="btn-update">Atualizar</button>
-                <button class="btn-delete">Deletar</button>
+                <button class="btn-update" data-value="${usuario.id}">
+                    Atualizar
+                </button>
+
+                <button class="btn-delete" data-value="${usuario.id}">
+                    Deletar
+                </button>
             </div>
         `;
 
         container.appendChild(card);
     });
+
+    // PEGA TODOS OS BOTÕES DELETE
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+
+    // ADICIONA EVENTO EM CADA UM
+    deleteButtons.forEach(button => {
+
+        button.addEventListener('click', async () => {
+
+            if (confirm(`Deseja deletar o usuário?`)) {
+                await fetch(`http://localhost:3000/usuarios/${button.dataset.value}`, {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                alert('Usuário deletado');
+            }
+
+            listarUsuarios();
+        });
+
+    });
+
 }
 
 listarUsuarios();
@@ -70,13 +100,11 @@ redirectReserva.addEventListener("click", () => {
 });
 
 logoutButton.addEventListener("click", () => {
-
-    localStorage.removeItem('token');
-
-    alert('Deslogado com sucesso!');
-
-    location.href = '../index.html';
-
+    if (confirm('Você quer encerrar a sessão?')) {
+        localStorage.removeItem('token');
+        alert('Deslogado com sucesso!');
+        location.href = '../index.html';
+    }
 });
 
 setInterval(listarUsuarios, 30000);
