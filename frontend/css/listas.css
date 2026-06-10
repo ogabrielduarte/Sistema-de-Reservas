@@ -98,6 +98,19 @@ p {
     text-shadow: 0 0 15px rgb(166, 247, 246);
 }
 
+
+div.profile {
+    color: #ffffff;
+    font-size: 1.5rem;
+
+    align-items: center;
+
+    position: relative;
+    right: 30px;
+
+    display: flex;
+}
+
 .fa-circle-user {
     flex: 0 0 auto;
 
