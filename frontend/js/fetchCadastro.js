@@ -8,7 +8,6 @@ export async function cadastrar(nome, genero, email, senha, termos, receberEmail
     });
 
     const data = await response.json();
-    console.log(data);
 
     if (!response.ok) {
         throw new Error(data.erro);
