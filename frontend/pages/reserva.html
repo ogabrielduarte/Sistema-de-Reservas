@@ -181,15 +181,12 @@
 
                     console.log(data);
 
+
                 } catch (error) {
 
                     console.error(error);
                     alert('Erro ao realizar reserva.');
                 }
-
-                const data = await response.json();
-
-                console.log(data)
             }
 
             buttonSubmit.addEventListener('click', (event) => {
@@ -198,6 +195,9 @@
 
                 const dataEntrada = inputEntrada.value;
                 const dataSaida = inputSaida.value;
+
+                console.log(dataEntrada);
+                console.log(dataSaida);
 
                 fetchReserva(dataEntrada, dataSaida);
 
