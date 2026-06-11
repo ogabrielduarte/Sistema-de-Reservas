@@ -78,7 +78,7 @@
 
             const hotelCard = document.querySelector('.card-reserva')
 
-           // Título do hotel 
+            // Título do hotel 
             const hotelTitulo = document.createElement('h2');
             hotelTitulo.classList.add('hotel-titulo');
             hotelTitulo.textContent = hotel.fantasia;
@@ -131,8 +131,11 @@
             // BOTÃO SEND
             const buttonSubmit = document.createElement('button');
             buttonSubmit.type = 'submit';
+            buttonSubmit.classList = 'send-btn';
+            buttonSubmit.id = 'send-btn';
             buttonSubmit.textContent = 'Enviar';
 
+            // APPENDS
             form.appendChild(labelEntrada);
             form.appendChild(inputEntrada);
             form.appendChild(labelSaida);
@@ -151,14 +154,64 @@
 
             hotelCard.appendChild(hotelImg);
             hotelCard.appendChild(hotelInfo);
+
+            async function fetchReserva(dataEntrada, dataSaida) {
+
+                try {
+
+                    const urlParams = new URLSearchParams(window.location.search);
+
+                    const idHotel = Number(urlParams.get('id'));
+                    const idUsuario = Number(localStorage.getItem('id'));
+
+                    const response = await fetch('http://localhost:3000/reservas', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            dataEntrada,
+                            dataSaida,
+                            idUsuario,
+                            idHotel
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    console.log(data);
+
+                } catch (error) {
+
+                    console.error(error);
+                    alert('Erro ao realizar reserva.');
+                }
+
+                const data = await response.json();
+
+                console.log(data)
+            }
+
+            buttonSubmit.addEventListener('click', (event) => {
+
+                event.preventDefault();
+
+                const dataEntrada = inputEntrada.value;
+                const dataSaida = inputSaida.value;
+
+                fetchReserva(dataEntrada, dataSaida);
+
+            });
         }
 
         carregarHotel();
 
+        // MOSTRAR NOME SE LOGADO
         document.getElementById('name').textContent = localStorage.getItem('nome');
 
         const logoutButton = document.getElementById("logout");
 
+        // LOG-OUT EVENT
         logoutButton.addEventListener("click", () => {
             if (confirm('Você quer encerrar a sessão?')) {
                 localStorage.removeItem('token');
