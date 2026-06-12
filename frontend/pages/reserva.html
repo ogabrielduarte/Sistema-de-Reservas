@@ -177,15 +177,14 @@
                         })
                     });
 
-                    const data = await response.json();
+                    if (!response.ok) {
+                        const data = await response.json();
+                        throw new Error(data.message || 'Erro ao realizar reserva');
+                    }
 
-                    console.log(data);
 
-
-                } catch (error) {
-
-                    console.error(error);
-                    alert('Erro ao realizar reserva.');
+                } catch (e) {
+                    console.error(e.message);
                 }
             }
 
@@ -195,9 +194,6 @@
 
                 const dataEntrada = inputEntrada.value;
                 const dataSaida = inputSaida.value;
-
-                console.log(dataEntrada);
-                console.log(dataSaida);
 
                 fetchReserva(dataEntrada, dataSaida);
 
