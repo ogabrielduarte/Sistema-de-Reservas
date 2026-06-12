@@ -46,7 +46,7 @@ export class Reserva {
             throw new Error('Formato de data inválido')
         }
 
-        this.#dataEntrada = dataEntrada
+        this.#dataEntrada = data
     }
 
     // GET-SET DATA_SAIDA
@@ -69,7 +69,7 @@ export class Reserva {
             throw new Error('Formato de data inválido')
         }
 
-        this.#dataSaida = dataSaida
+        this.#dataSaida = data
     }
 
     // GET-SET ID_USUARIO
